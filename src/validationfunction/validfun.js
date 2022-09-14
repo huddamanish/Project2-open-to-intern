@@ -4,7 +4,7 @@ function collegeValidation(value) {
     return (Object.keys(college).length > 0)
 }
 
-//=====================internValidation=====================================//
+//==================================================internValidation=====================================//
 
 const internValidation = function (intern) {
     return inp.indexOf(intern) !== -1;
