@@ -17,6 +17,7 @@ const getCollege = async function (req, res) {
         if (!validfun.nameValidation(collegeName)) {
             return res.status(400).send({ status: false, msg: "Please enter intern College Name!!" })
         }
+        ////////
 
         const collegeData=await collegeModel.findOne({name:collegeName}).select({name:1,fullName:1,logoLink:1});
         if (!collegeData) {return res.status(404).send({status: false, msg:"No college data found"})};
