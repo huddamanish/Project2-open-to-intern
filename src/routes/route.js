@@ -5,17 +5,15 @@ const collegeController=require('../controllers/collegeController')
 const getCollegeController=require('../controllers/getCollegeController')
 
 //CREATE BLOG
-
-
+router.post("/functionup/colleges", collegeController.createCollege)
 
 //CREATE INTERN
 
+router.post("/functionup/interns", internController.createIntern)
 
+// GET COLLEGE DATA
 
-// GET COLLEGE CONTROLLER
-
-
-
+router.get("/functionup/collegeDetails", getCollegeController.getCollege)
 
 
 router.all("/*", (req, res) => { res.status(404).send({ status: false, message: "Endpoint is not correct" }) })

@@ -6,10 +6,9 @@ const InternSchema = new mongoose.Schema({
 
  name:{type:String,required:true},
 
- email:{type:String,require:true,unique:true,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]},
+ email:{type:String,require:true,unique:true,},
 
- mobile:{type:String,match:[/^\d{10}$/] ,unique:true } ,
+ mobile:{type:String ,unique:true } ,
 
  college:{type:ObjectId,ref:"College", required: true},
 
