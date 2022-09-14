@@ -19,12 +19,17 @@ const createIntern = async function (req, res) {
         }
         let { name, email, mobile, collegeName} = data;
 
+        if (!validfun.nameValidation(name)) {
+            return res.status(400).send({ status: false, msg: "Please enter intern name!!" })
+        };
+
+
         if (!name) {return res.status(400).send({ status: false, msg: "name is required" })}
         if (!email) {return res.status(400).send({ status: false, msg: "email is required" })}
         if (!mobile) {return res.status(400).send({ status: false, msg: "mobile Number missing" })}
         if (!collegeName) {return res.status(400).send({ status: false, msg: "college name missing" })}
 
-        if(typeof (name) !=="string")return res.status(400).send({status:false,msg: "Name must be string"})
+        
         if(typeof (email) !=="string")return res.status(400).send({status:false,msg: "Email must be string"})
         if(typeof (mobile) !=="string")return res.status(400).send({status:false,msg: "mobile number must be string"})
         if(typeof (collegeName) !=="string")return res.status(400).send({status:false,msg: "college name must be string"})
