@@ -10,6 +10,14 @@ const internValidation = function (intern) {
     return inp.indexOf(intern) !== -1;
   };
 
+//=====================================nameValidation=================================================//
+
+const nameValidation = function(name) {
+
+    if (typeof name === 'undefined' || name === null) return false;
+    if (typeof name === 'string' && name.trim().length === 0) return false;
+
+};
 
 
-module.exports = { collegeValidation, internValidation }
+module.exports = { collegeValidation, internValidation, nameValidation }

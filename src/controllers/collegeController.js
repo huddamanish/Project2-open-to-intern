@@ -16,7 +16,7 @@ const createCollege = async function (req, res) {
  if(typeof (logoLink) !=="string")return res.status(400).send({status:false,msg: "logoLink must be string"})//this is for url
 
  if(isDeleted){
-    if(typeof (isDeleted) !==  "boolean")
+    if(typeof (isDeleted) !== "boolean")
     return res.status(400).send({status:false,msg: "isDeleted must be a Boolean value"})
  }
 
