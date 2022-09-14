@@ -33,13 +33,17 @@ const createIntern = async function (req, res) {
         if (!emailRegex.test(email)) {return res.status(400).send({ status: false, msg: "Invalid emailId" })}
         if (!mobileRegex.test(mobile)) {return res.status(400).send({ status: false, msg: "Invalid mobile number" })}
 
-        
-        let validation = await collegeModel.findOne({name:collegeName})
-        if (!validation) {res.status(404).send({ status: false, msg: " college is not present" })}
+        let object = {}
+        if (name !== null) { object.name = name }
+        if (email !== null) { object.email = email }
+        if (mobile !== null) { object.mobile = mobile }
 
+        let collegeId = await collegeModel.findOne({name:collegeName})
+        if (!collegeId) {res.status(404).send({ status: false, msg: " college is not present" })}
+        if (collegeId !== null) { object.collegeId = collegeId }
 
     
-        let savedData = await internModel.create(data);
+        let savedData = await internModel.create(object);
         res.status(201).send({ status: true, msg: savedData })
     } catch (error) {
         res.status(500).send({ msg: error.message })
