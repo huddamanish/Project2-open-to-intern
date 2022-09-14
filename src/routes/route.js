@@ -17,8 +17,6 @@ router.post("/functionup/interns", internController.createIntern)
 router.get("/functionup/collegeDetails", getCollegeController.getCollege)
 
 
-
-
 router.all("/*", (req, res) => { res.status(404).send({ status: false, message: "Endpoint is not correct" }) })
 
 module.exports = router;

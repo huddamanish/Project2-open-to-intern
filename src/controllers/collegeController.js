@@ -17,13 +17,16 @@ const createCollege = async function (req, res) {
         if (!fullName) return res.status(400).send({ status: false, msg: "Fullname is required" })
         if (!logoLink) return res.status(400).send({ status: false, msg: "logoLink is required" })
 
-        // if (typeof (name) !== "string") return res.status(400).send({ status: false, msg: "Name must be string" })
-        // if (typeof (fullName) !== "string") return res.status(400).send({ status: false, msg: "fullName must be string" })
+      //   if (typeof (name) !== "string") return res.status(400).send({ status: false, msg: "Name must be string" })
+      //   if (typeof (fullName) !== "string") return res.status(400).send({ status: false, msg: "fullName must be string" })
         if (!validfun.nameValidation(name)) {
             return res.status(400).send({ status: false, msg: "Please enter name" })}
 
             if (!validfun.nameValidation(fullName)) {
                 return res.status(400).send({ status: false, msg: "Please enter full name!!" })}
+
+      const avlebalData=await collegeModel.find({name:name,fullName:fullName})
+      if(avlebalData.length>0){return res.status(409).send({status:false,msg:"user alreeady exists"})}
 
         if (typeof (logoLink) !== "string") return res.status(400).send({ status: false, msg: "logoLink must be string" })//this is for url
 
@@ -39,7 +42,7 @@ const createCollege = async function (req, res) {
         
         if (!urlPattern.test(logoLink)) {return res.status(400).send({ status: false, msg: "Invalid url" })}
 
-        let savedData = await collegeModel.create(collegeDetails);
+        let savedData = await collegeModel.create(data);
 
         res.status(201).send({ status: true, data: savedData });
 

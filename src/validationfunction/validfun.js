@@ -14,8 +14,10 @@ const internValidation = function (intern) {
 
 const nameValidation = function(name) {
 
-    if (typeof name === 'undefined' || name === null) return false;
-    if (typeof name === 'string' && name.trim().length === 0) return false;
+    if (typeof name === 'undefined' || name === null) {return false};
+    if (typeof name === 'string' && name.trim().length === 0){ return false};
+   
+    return true
 
 };
 
