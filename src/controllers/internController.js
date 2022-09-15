@@ -36,8 +36,8 @@ const createIntern = async function (req, res) {
         if (!emailRegex.test(email)) {return res.status(400).send({ status: false, msg: "Invalid emailId" })}
         if (!mobileRegex.test(mobile)) {return res.status(400).send({ status: false, msg: "Invalid mobile number" })}
 
-        const avlebalData=await collegeModel.find({email:email,mobile:mobile})
-        if(avlebalData.length>0){return res.status(409).send({status:false,msg:"user alreeady exists"})}
+        const availableData=await collegeModel.find({email:email,mobile:mobile})
+        if(availableData.length>0){return res.status(409).send({status:false,msg:"intern already exists"})}
 
         let object = {}
         if (name !== null) { object.name = name }

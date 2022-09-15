@@ -6,7 +6,7 @@ const InternSchema = new mongoose.Schema({
 
  name:{type:String,required:true},
 
- email:{type:String,require:true,unique:true,},
+ email:{type:String,require:true,unique:true},
 
  mobile:{type:String ,unique:true } ,
 
