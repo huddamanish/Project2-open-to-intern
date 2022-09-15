@@ -3,18 +3,17 @@ const { default: mongoose } = require("mongoose")
 const internModel = require("../models/internModel")
 const collegeModel = require("../models/collegeModel")
 const validfun = require("../validationfunction/validfun")
-
+const nameRegex = /^[a-zA-Z_ ]*$/
 
 // ===========================||GET COLLEGE DATA||==================
 
 const getCollege = async function (req, res) {
     try {
         let collegeName = req.query.collegeName
-        if (!collegeName) {  return res.status(404).send({ status: false, msg: "Please provide college Name in query." }) }
-        
         if (!validfun.nameValidation(collegeName)) {
-            return res.status(400).send({ status: false, msg: "Please enter intern College Name!!" })
-        }
+            return res.status(400).send({ status: false, msg: "Please enter intern College Name!!" })}
+        
+        if (!nameRegex.test(collegeName)) {return res.status(400).send({ status: false, msg: "Invalid college Name" })}
 
         const collegeData=await collegeModel.findOne({name:collegeName}).select({name:1,fullName:1,logoLink:1});
         if (!collegeData) {return res.status(404).send({status: false, msg:"No college data found"})};
