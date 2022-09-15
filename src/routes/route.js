@@ -12,6 +12,8 @@ router.post("/functionup/colleges", collegeController.createCollege)
 
 router.post("/functionup/interns", internController.createIntern)
 
+// router.get("/functionup/allInterns", internController.allIntern)
+
 // GET COLLEGE DATA
 
 router.get("/functionup/collegeDetails", getCollegeController.getCollege)

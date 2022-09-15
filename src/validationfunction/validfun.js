@@ -18,7 +18,6 @@ const nameValidation = function(name) {
     if (typeof name === 'string' && name.trim().length === 0){ return false};
    
     return true
-
 };
 
 
