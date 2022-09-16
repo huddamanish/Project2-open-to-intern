@@ -3,6 +3,7 @@ const validfun = require("../validationfunction/validfun")
 const nameRegex = /^[a-zA-Z_ ]*$/
 const isValidName=/^[a-zA-Z]{3,9}$/
 const isValidLogo=/^https?:\/\/(.+\/)+.+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif|jfif))$/i
+
 // ===========================||CREATE COLLEGE||==================
 
 const createCollege = async function (req, res) {
