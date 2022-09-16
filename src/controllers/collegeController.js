@@ -1,9 +1,8 @@
 const collegeModel = require("../models/collegeModel")
 const validfun = require("../validationfunction/validfun")
-const urlPattern = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/
 const nameRegex = /^[a-zA-Z_ ]*$/
 const isValidName=/^[a-zA-Z]{3,9}$/
-
+const isValidLogo=/^https?:\/\/(.+\/)+.+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif|jfif))$/i
 // ===========================||CREATE COLLEGE||==================
 
 const createCollege = async function (req, res) {
@@ -30,7 +29,7 @@ const createCollege = async function (req, res) {
             return res.status(400).send({ status: false, msg: "Please enter logoLink!!" })}
             
         if (!nameRegex.test(name)) {return res.status(400).send({ status: false, msg: "Invalid name" })}
-        // if (!urlPattern.test(logoLink)) {return res.status(400).send({ status: false, msg: "Invalid url" })}
+        if (!isValidLogo.test(logoLink)) {return res.status(400).send({ status: false, msg: "Invalid logoLink url" })}
 
         const avlebalData=await collegeModel.find({$or:[{name:name},{fullName:fullName}]})
         if(avlebalData.length>0){return res.status(409).send({status:false,msg:"College already exists"})}
