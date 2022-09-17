@@ -35,7 +35,7 @@ const createCollege = async function (req, res) {
       const availableData=await collegeModel.find({name:name,fullName:fullName})
       if(availableData.length>0){return res.status(409).send({status:false,msg:"user already exists"})}
 
-        if (typeof (logoLink) !== "string") return res.status(400).send({ status: false, msg: "logoLink must be string" })//this is for url
+      if (typeof (logoLink) !== "string") return res.status(400).send({ status: false, msg: "logoLink must be string" })//this is for url
 
         if (isDeleted) {
             if (typeof (isDeleted) !== "boolean")

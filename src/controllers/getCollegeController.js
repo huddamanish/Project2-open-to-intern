@@ -21,7 +21,7 @@ const getCollege = async function (req, res) {
         let collegeId=collegeData._id;
        
         const internData=await internModel.find({collegeId:collegeId}).select({name:1,email:1,mobile:1})
-        if(!internData){return res.status(404).send({ status: false, msg: "No intern found." })};
+        if(!internData[0]){ internData[0]="No intern found."} ;
 
         Object.assign(collegeData._doc, { interns: internData });
         res.status(200).send({ status: true, data: collegeData });
